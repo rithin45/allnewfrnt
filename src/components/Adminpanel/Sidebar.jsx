@@ -69,6 +69,9 @@ const Sidebar = () => {
           <ListItem as={Link} to="/viewdetails">
             <ListItemText primary="View Products" />
           </ListItem>
+          <ListItem as={Link} to="/oddr">
+            <ListItemText primary="Order Details" />
+          </ListItem>
         </List>
       </Drawer>
       
