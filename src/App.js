@@ -34,7 +34,6 @@ import OrderReview from './utils/OrderReview';
         <Route path={'/abt'} element={<About/>}></Route>
         <Route path={'/cont'} element={<Contact/>}></Route>
         <Route path={'/ship'} element={<Shippmentadr/>}></Route>
-        <Route path={'/oddr'} element={<OrderHistory/>}></Route>
         <Route path={'/register'} element={<Register/>}></Route>
         <Route path={'/orderc'} element={<OrderReview/>}></Route>
 
@@ -47,6 +46,7 @@ import OrderReview from './utils/OrderReview';
         <Route path={'/sview'}element={<Subcategorydetails method='get'/>}></Route> 
        <Route path='/s'element={<Subcategory method='post'/>}/>
       <Route path='/c'element={<Category method='post'/>}/>
+      <Route path={'/oddr'} element={<OrderHistory/>}></Route>
       
       </Routes>
      </BrowserRouter>

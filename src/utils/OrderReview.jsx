@@ -46,8 +46,21 @@ const OrderReview = () => {
 
   const handleSubmitOrder = async () => {
     try {
-      // Your order submission logic here
-      // This part is not affected by the fetching of shipping address
+      const orderData = {
+        cartItems: cart,
+        totalAmount: totalAmount,
+        shippingAddress: shippingAddress,
+        codInfo: 'Cash on Delivery' // Example COD information
+      };
+
+      const response = await axios.post('http://localhost:3005/order', orderData);
+      if (response.data.success) {
+        alert('Order placed successfully.');
+        navigate('/');
+        // Redirect or perform other actions as needed
+      } else {
+        alert('Failed to place order.');
+      }
     } catch (error) {
       console.error('Error placing order:', error);
       alert('An error occurred while placing the order. Please try again.');
@@ -55,6 +68,7 @@ const OrderReview = () => {
   };
 
   const handleEditCart = () => {
+    // Redirect to the cart page for editing
     navigate('/Addc');
   };
 
@@ -87,6 +101,7 @@ const OrderReview = () => {
                         <Typography variant="body2" color="text.secondary">
                           Price: {subProduct.offer_price || 'N/A'}
                         </Typography>
+                        
                       </div>
                     ))}
                   </CardContent>

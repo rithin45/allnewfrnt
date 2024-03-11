@@ -42,6 +42,16 @@ const OrderHistory = () => {
             <Typography variant="body1">
               COD Info: {order.codInfo}
             </Typography>
+            <Typography variant="body1">
+              COD Info: {order.createdAt}
+            </Typography>
+            <ul>
+            {order.cartItems.map(item => (
+              <li key={item._id}>
+                Product ID: {item.productId}
+              </li>
+            ))}
+          </ul>
           </CardContent>
         </Card>
       ))}
