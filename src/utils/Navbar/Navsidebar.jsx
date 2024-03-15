@@ -11,28 +11,15 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import AppleIcon from '@mui/icons-material/Apple';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
-import Login from '../../components/Login/Login';
 import { Link, Navigate } from 'react-router-dom';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { LocalGroceryStore } from '@mui/icons-material';
 import "./Style.css"
 
-
-
-
-
-
 const Navsidebar = () => {
-  const { Search } = Input;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
-  const [cartCount,setCartCount] = useState(0);
-  const onSearch = (value) => {
-    console.log(value)
-    Navigate(`/search/${value}`)
-  }
-
-
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -45,7 +32,18 @@ const Navsidebar = () => {
     setDrawerOpen(open);
   };
 
-useEffect(() => {
+  const handleSignOut = () => {
+    // Implement signout logic here
+    setLoggedIn(false);
+  };
+
+  useEffect(() => {
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn) {
+      setLoggedIn(true);
+    }
+
     // Get user's location
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -69,12 +67,6 @@ useEffect(() => {
       console.log("Geolocation is not supported by this browser.");
     }
   }, []);
-  const handleSignOut = () => {
-    // Implement signout logic here
-    console.log('User signed out');
-  };
-  
-
 
   return (
     <div>
@@ -103,9 +95,6 @@ useEffect(() => {
             >
               <b>Grocery Mart</b>
             </Typography>
-          {/* <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ position: 'relative' }}> */}
-              
               <InputBase
                 placeholder="Search..."
                 inputProps={{ 'aria-label': 'search' }}
@@ -114,22 +103,11 @@ useEffect(() => {
               <IconButton color="inherit">
                 <SearchIcon />
               </IconButton>
-            {/* </div>
-            </div> */}
             {userLocation && (
             <Typography variant="subtitle1" color="inherit">
             <LocationOnIcon sx={{ marginRight: 1 }} /> {userLocation.name}
           </Typography>
           )}
-          {/* <div style={{flexGrow:1}}>
-            <IconButton edge="start" color='inherit' aria-label='shopping-cart' as={Link} to="/Addc">
-              <Badge badgeConent={cartCount} color='secondary'><ShoppingCartIcon/></Badge>
-            </IconButton>
-
-          </div> */}
-          {/* <Button color="inherit" onClick={handleSignOut} startIcon={<ExitToAppIcon />}>
-              Sign Out
-            </Button> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -138,20 +116,28 @@ useEffect(() => {
         onClose={toggleDrawer(false)}
       >
         <List>
-          {/* <ListItem as={Link} to="/nav">
-            <ListItemIcon > 
-              <SupervisedUserCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Admin" />
-          </ListItem> */}
-
-          <ListItem as={Link} to="/sgn">
-            <ListItemIcon>
-              <LockOpenIcon/>
-            </ListItemIcon>
-            <ListItemText primary="Signup" />
-          </ListItem>
-          <Divider />
+          {!loggedIn ? (
+            <>
+              <Divider />
+              <ListItem as={Link} to="/sgn">
+                <ListItemIcon>
+                  <SupervisedUserCircleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItem>
+              <Divider />
+            </>
+          ) : (
+            <>
+              <ListItem  onClick={handleSignOut}>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
           <ListItem button>
             <ListItemText primary="Category" />
           </ListItem>

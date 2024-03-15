@@ -115,7 +115,7 @@ const OrderReview = () => {
       </Grid>
 
       {/* Display Shipping Address */}
-      <Typography variant='h5' gutterBottom>
+      {/* <Typography variant='h5' gutterBottom>
         Shipping Address
       </Typography>
       <Typography variant="body1">Full Name: {shippingAddress.fullName}</Typography>
@@ -123,7 +123,7 @@ const OrderReview = () => {
       <Typography variant="body1">Address Line 2: {shippingAddress.addressLine2}</Typography>
       <Typography variant="body1">City: {shippingAddress.city}</Typography>
       <Typography variant="body1">Postal Code: {shippingAddress.postalCode}</Typography>
-      <Typography variant="body1">Country: {shippingAddress.country}</Typography>
+      <Typography variant="body1">Country: {shippingAddress.country}</Typography> */}
 
       <div style={{ marginTop: '20px' }}>
         <div className='total-amount'>
