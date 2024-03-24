@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Drawer, IconButton } from '@mui/material';
+import { Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography, Drawer, IconButton } from '@mui/material';
 import Navsidebar from './Navbar/Navsidebar';
 import { useNavigate } from 'react-router-dom'; 
 import '../utils/cart.scss';
@@ -42,8 +42,6 @@ const Addcrt = () => {
   const proceedToPayment = () => {
     setOpen(false); 
     navigate("/ship");
-
-  
     clearCart();
   };
 
@@ -51,6 +49,16 @@ const Addcrt = () => {
     axios.delete("http://localhost:3005/cart")
       .then(res => {
         setCart([]); 
+      })
+      .catch(err => console.log(err));
+  };
+
+  const deleteItem = (_id) => {
+    axios.delete(`http://localhost:3005/cart/${_id}`)
+      .then(res => {
+        // Update cart after deletion
+        setCart(cart.filter(product => product._id !== _id)); 
+        calculateTotalAmount(cart.filter(product => product._id !== _id));
       })
       .catch(err => console.log(err));
   };
@@ -111,6 +119,7 @@ const Addcrt = () => {
                         </Typography>
                       </div>
                     ))}
+                    <Button variant="outlined" color="secondary" onClick={() => deleteItem(product._id)}>Delete</Button>
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -125,5 +134,3 @@ const Addcrt = () => {
 };
 
 export default Addcrt;
-
-

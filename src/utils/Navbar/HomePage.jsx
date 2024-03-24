@@ -25,7 +25,7 @@ const HomePage = () => {
               Fresh Grocery Items Delivered to Your Doorstep
             </h1>
             <p className="primary-text">
-              Our dedicated team ensures that your grocery items, including vegetables, dairy products, and bakery items, are carefully selected and delivered fresh to your home.
+              Our dedicated team ensures that your grocery items, including Vegetables,Fruits are carefully selected and delivered fresh to your home.
             </p>
             <button
               className="secondary-button"

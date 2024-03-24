@@ -9,17 +9,13 @@ const Testimonial = () => {
         <p className="primary-subheading">Testimonial</p>
         <h1 className="primary-heading">What They Are Saying</h1>
         <p className="primary-text">
-          "Foodies Paradise: Where cravings meet convenience, and flavor is
-          delivered to your doorstep. Indulge in a culinary journey that ignites
-          your taste buds and satisfies your soul. Bon appétit!"
+        "Grocery Shop: Where culinary desires meet convenience, and quality is delivered to your doorstep. Embark on a gastronomic adventure that tantalizes your taste buds and nourishes your spirit. Enjoy every bite!"
         </p>
       </div>
       <div className="testimonial-section-bottom">
         {/* <img src={ProfilePic} alt="" /> */}
         <p>
-          Foodies Paradise is an absolute delight! Their wide selection, prompt
-          delivery, and mouthwatering flavors make every meal a heavenly
-          experience.
+        "Grocery Haven is an absolute delight! Their extensive variety, prompt delivery, and tantalizing flavors make every shopping trip a heavenly experience."
         </p>
         <div className="testimonials-stars-container">
           <AiFillStar />

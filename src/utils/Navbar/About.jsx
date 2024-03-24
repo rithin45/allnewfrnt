@@ -14,8 +14,7 @@ const About = () => {
                     <Paper elevation={3} style={{ padding: '24px' }}>
                         <Typography variant="h2" gutterBottom>Our Story</Typography>
                         <Typography variant="body1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec ipsum vitae quam aliquam tincidunt. Cras et consectetur risus. Suspendisse potenti. Morbi lobortis aliquet vestibulum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ullamcorper urna a leo sagittis, id volutpat justo condimentum. Donec at urna vel metus vestibulum sollicitudin.
-                        </Typography>
+                        In the heart of the city, SmartMart emerges as a pioneer in grocery shopping innovation. Equipped with AI-powered carts and IoT sensors, customers enjoy a seamless experience as they navigate the aisles. Interactive displays offer personalized recommendations and product information, enhancing the shopping journey. With real-time inventory monitoring and 24/7 AI chat support, SmartMart sets a new standard for convenience and efficiency. Customers flock to experience the future of grocery shopping, where technology and creativity converge to redefine the retail experience.                        </Typography>
                     </Paper>
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -34,20 +33,43 @@ const About = () => {
                                 <Avatar src="/images/ceo.jpg" alt="CEO" style={{ width: '80px', height: '80px' }} />
                             </Grid>
                             <Grid item xs>
-                                <Typography variant="h6">John Doe</Typography>
+                                <Typography variant="h6">Mithul</Typography>
                                 <Typography variant="body2">Founder & CEO</Typography>
                             </Grid>
+                            
                         </Grid>
-                        <Divider style={{ margin: '16px 0' }} />
+                        <br /><br />
                         <Grid container spacing={2}>
                             <Grid item>
-                                <Avatar><PersonIcon /></Avatar>
+                                <Avatar src="/images/ceo.jpg" alt="CEO" style={{ width: '80px', height: '80px' }} />
                             </Grid>
                             <Grid item xs>
+                                <Typography variant="h6">Niranj</Typography>
+                                <Typography variant="body2">Founder & CEO</Typography>
+                            </Grid>
+                            
+                        </Grid>
+                        <br /><br />
+                        <Grid container spacing={2}>
+                            <Grid item>
+                                <Avatar src="/images/ceo.jpg" alt="CEO" style={{ width: '80px', height: '80px' }} />
+                            </Grid>
+                            <Grid item xs>
+                                <Typography variant="h6">Rithin</Typography>
+                                <Typography variant="body2">Founder & CEO</Typography>
+                            </Grid>
+                            
+                        </Grid>
+                        <Divider style={{ margin: '16px 0' }} />
+                        {/* <Grid container spacing={2}> */}
+                            {/* <Grid item>
+                                <Avatar><PersonIcon /></Avatar>
+                            </Grid> */}
+                            {/* <Grid item xs>
                                 <Typography variant="h6">Jane Smith</Typography>
                                 <Typography variant="body2">Operations Manager</Typography>
-                            </Grid>
-                        </Grid>
+                            </Grid> */}
+                        {/* </Grid> */}
                         {/* Add more team members as needed */}
                     </Paper>
                 </Grid>

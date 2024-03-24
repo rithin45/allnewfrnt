@@ -14,6 +14,7 @@ import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import { Link, Navigate } from 'react-router-dom';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { LocalGroceryStore } from '@mui/icons-material';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 import "./Style.css"
 
 const Navsidebar = () => {
@@ -138,21 +139,13 @@ const Navsidebar = () => {
               <Divider />
             </>
           )}
-          <ListItem button>
-            <ListItemText primary="Category" />
-          </ListItem>
           <ListItem as={Link} to="/Addp">
             <ListItemIcon>
-              <LocalFloristIcon />
+              <ProductionQuantityLimitsIcon/>
             </ListItemIcon>
-            <ListItemText primary="Vegetables" />
+            <ListItemText primary="All Products" />
           </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <AppleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Fruits" />
-          </ListItem>
+          
           
           <Divider />
           
