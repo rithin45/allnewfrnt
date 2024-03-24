@@ -7,12 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const OrderReview = () => {
   const [cart, setCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [shippingAddress, setShippingAddress] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchCart();
-    fetchShippingAddress();
   }, []);
 
   const fetchCart = async () => {
@@ -35,21 +33,11 @@ const OrderReview = () => {
     setTotalAmount(total);
   };
 
-  const fetchShippingAddress = async () => {
-    try {
-      const response = await axios.get('http://localhost:3005/address');
-      setShippingAddress(response.data);
-    } catch (error) {
-      console.error('Error fetching shipping address:', error);
-    }
-  };
-
   const handleSubmitOrder = async () => {
     try {
       const orderData = {
         cartItems: cart,
         totalAmount: totalAmount,
-        shippingAddress: shippingAddress,
         codInfo: 'Cash on Delivery' // Example COD information
       };
 
@@ -113,17 +101,6 @@ const OrderReview = () => {
           <Typography variant="body1">Cart is empty</Typography>
         )}
       </Grid>
-
-      {/* Display Shipping Address */}
-      {/* <Typography variant='h5' gutterBottom>
-        Shipping Address
-      </Typography>
-      <Typography variant="body1">Full Name: {shippingAddress.fullName}</Typography>
-      <Typography variant="body1">Address Line 1: {shippingAddress.addressLine1}</Typography>
-      <Typography variant="body1">Address Line 2: {shippingAddress.addressLine2}</Typography>
-      <Typography variant="body1">City: {shippingAddress.city}</Typography>
-      <Typography variant="body1">Postal Code: {shippingAddress.postalCode}</Typography>
-      <Typography variant="body1">Country: {shippingAddress.country}</Typography> */}
 
       <div style={{ marginTop: '20px' }}>
         <div className='total-amount'>

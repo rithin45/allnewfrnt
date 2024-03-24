@@ -13,13 +13,18 @@ const Addcrt = () => {
   const navigate = useNavigate(); 
 
   useEffect(() => {
-    axios.get("http://localhost:3005/cart")
-      .then(res => {
-        setCart(res.data);
-        calculateTotalAmount(res.data);
-      })
-      .catch(err => console.log(err));
+    fetchCart();
   }, []);
+
+  const fetchCart = async () => {
+    try {
+      const response = await axios.get("http://localhost:3005/cart");
+      setCart(response.data);
+      calculateTotalAmount(response.data);
+    } catch (error) {
+      console.error('Error fetching cart:', error);
+    }
+  };
 
   const calculateTotalAmount = (cartItems) => {
     let total = 0;
@@ -42,25 +47,30 @@ const Addcrt = () => {
   const proceedToPayment = () => {
     setOpen(false); 
     navigate("/ship");
-    clearCart();
   };
 
-  const clearCart = () => {
-    axios.delete("http://localhost:3005/cart")
-      .then(res => {
-        setCart([]); 
-      })
-      .catch(err => console.log(err));
+  const clearCart = async () => {
+    try {
+      const response = await axios.delete("http://localhost:3005/cart");
+      if (response.status === 200) {
+        setCart([]);
+        setTotalAmount(0);
+      }
+    } catch (error) {
+      console.error('Error clearing cart:', error);
+    }
   };
 
-  const deleteItem = (_id) => {
-    axios.delete(`http://localhost:3005/cart/${_id}`)
-      .then(res => {
-        // Update cart after deletion
+  const deleteItem = async (_id) => {
+    try {
+      const response = await axios.delete(`http://localhost:3005/cart/${_id}`);
+      if (response.status === 200) {
         setCart(cart.filter(product => product._id !== _id)); 
         calculateTotalAmount(cart.filter(product => product._id !== _id));
-      })
-      .catch(err => console.log(err));
+      }
+    } catch (error) {
+      console.error('Error deleting item from cart:', error);
+    }
   };
 
   return (
